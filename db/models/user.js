@@ -2,16 +2,34 @@
 
 // bcrypt docs: https://www.npmjs.com/package/bcrypt
 const bcrypt = require('bcryptjs')
-    , {STRING, VIRTUAL} = require('sequelize')
+    , {STRING, BOOLEAN, VIRTUAL} = require('sequelize')
 
 module.exports = db => db.define('users', {
-  name: STRING,
+  name: {
+    type: STRING,
+    allowNull: false
+  },
+  photo: {
+    type: STRING,
+    // defaultValue: '/img/default-photo.jpg'
+    defaultValue: 'http://i.imgur.com/3BrMZK8.png'
+  },
+  phone: STRING,
   email: {
     type: STRING,
     validate: {
       isEmail: true,
       notEmpty: true,
-    }
+    },
+    unique: true
+  },
+  // password: STRING,
+  isAdmin: {
+    type: BOOLEAN,
+    defaultValue: false
+  },
+  googleId: {
+    type: STRING
   },
 
   // We support oauth, so users may or may not have passwords.
@@ -34,9 +52,10 @@ module.exports = db => db.define('users', {
   }
 })
 
-module.exports.associations = (User, {OAuth, Thing, Favorite}) => {
+module.exports.associations = (User, {OAuth, Product, Cart}) => {
   User.hasOne(OAuth)
-  User.belongsToMany(Thing, {as: 'favorites', through: Favorite})
+  Product.hasMany(User)
+  User.hasOne(Cart)
 }
 
 function setEmailAndPassword(user) {
