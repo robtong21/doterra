@@ -57,6 +57,7 @@
     "express": "^4.17.1",
     "finalhandler": "^1.1.2",
     "homedir": "^0.6.0",
+    "lodash.merge": "^4.6.2",
     "marked": "^0.6.2",
     "mongodb": "^2.2.31",
     "passport": "^0.3.2",
