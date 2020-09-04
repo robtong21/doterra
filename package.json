@@ -58,7 +58,7 @@
     "finalhandler": "^1.1.2",
     "homedir": "^0.6.0",
     "lodash.merge": "^4.6.2",
-    "marked": "^0.6.2",
+    "marked": "^0.7.0",
     "mongodb": "^2.2.31",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.1",
