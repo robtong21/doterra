@@ -106,6 +106,6 @@
     "supertest": "^3.0.0",
     "volleyball": "^1.4.1",
     "webpack": "^2.2.1",
-    "webpack-livereload-plugin": "^0.10.0"
+    "webpack-livereload-plugin": "^3.0.2"
   }
 }
